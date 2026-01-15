@@ -62,9 +62,69 @@ class GameBoard:
         self.board[row][col] = Cell.EMPTY
 
 
-def minimax(game_board: GameBoard, player: Player, alpha: float, beta: float) -> tuple[float, tuple[int, int] | None]:
-    pass
+def minimax(
+    game_board: GameBoard,
+    player: Player,
+    alpha: float,
+    beta: float,
+    depth: int = 0
+) -> tuple[float, tuple[int, int] | None]:
 
+    if game_board.win(Player.PLAYER):
+        return Config.WIN_REWARD - (depth * 0.01), None
+    if game_board.win(Player.OPPONENT):
+        return -Config.WIN_REWARD + (depth * 0.01), None
+
+    moves = [
+        (r, c) 
+        for r in range(Config.BOARD_SIZE) 
+        for c in range(Config.BOARD_SIZE) 
+        if game_board.board[r][c] == Cell.EMPTY
+    ]
+
+    if not moves:
+        return Config.DRAW_REWARD, None
+
+    best_move: tuple[int, int] | None = None
+
+    if player == Player.PLAYER:
+        max_eval = -float("inf")
+        for row, col in moves:
+            game_board.make_move(row, col, player)
+            
+            eval_score, _ = minimax(game_board, player.opponent(), alpha, beta, depth + 1)
+            
+            game_board.set_empty(row, col)
+
+            if eval_score > max_eval:
+                max_eval = eval_score
+                best_move = (row, col)
+
+            alpha = max(alpha, eval_score)
+            if beta <= alpha:
+                break
+
+        return max_eval, best_move
+
+    else:
+        min_eval = float("inf")
+        for row, col in moves:
+            game_board.make_move(row, col, player)
+            
+            # Recurse with depth + 1
+            eval_score, _ = minimax(game_board, player.opponent(), alpha, beta, depth + 1)
+            
+            game_board.set_empty(row, col)
+
+            if eval_score < min_eval:
+                min_eval = eval_score
+                best_move = (row, col)
+
+            beta = min(beta, eval_score)
+            if beta <= alpha:
+                break
+
+        return min_eval, best_move
 
 def game_loop() -> None:
     game_board: GameBoard = GameBoard()
