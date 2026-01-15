@@ -111,7 +111,6 @@ def minimax(
         for row, col in moves:
             game_board.make_move(row, col, player)
             
-            # Recurse with depth + 1
             eval_score, _ = minimax(game_board, player.opponent(), alpha, beta, depth + 1)
             
             game_board.set_empty(row, col)
