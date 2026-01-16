@@ -1,17 +1,17 @@
-# Ultimate Tic-Tac-Toe Bot 🎮
+# Ultimate Tic-Tac-Toe Bot 
 
 Rozwiązanie algorytmiczne zadania **Tic-Tac-Toe** (Ultimate Tic-Tac-Toe) dostępnego na platformie [CodinGame](https://www.codingame.com/ide/puzzle/tic-tac-toe).
 
 Celem projektu było stworzenie bota, który potrafi pokonać wbudowane AI przeciwnika, wykorzystując zaawansowane algorytmy przeszukiwania drzewa gry.
 
-## 📋 Opis Zadania
+## Opis Zadania
 
 Gra to **Ultimate Tic-Tac-Toe** (Strategiczne Kółko i Krzyżyk). Rozgrywka toczy się na dużej planszy 9x9, która podzielona jest na 9 mniejszych plansz 3x3.
 * Wygrywając małą planszę, przejmujesz odpowiednie pole na dużej planszy.
 * Kluczowa zasada: Twój ruch na małej planszy determinuje, na której z 9 małych plansz musi zagrać przeciwnik w następnej turze.
 * Celem jest ułożenie linii z trzech wygranych małych plansz.
 
-## 🧠 Zastosowane Algorytmy
+## Zastosowane Algorytmy
 
 Bot został napisany w języku **Python** i opiera się na klasycznych algorytmach sztucznej inteligencji dla gier bez losowości z pełną informacją:
 
@@ -35,7 +35,7 @@ Ponieważ bot rzadko widzi "mat" (koniec gry) w kilku ruchach, stan planszy jest
 * Strategiczne pozycjonowanie (bonusy za środek i rogi małych plansz).
 * Bonusy za kierowanie gry na nieukończone plansze (utrzymywanie inicjatywy).
 
-## 🛠️ Struktura Kodu
+## Struktura Kodu
 
 * `Config`: Klasa konfiguracyjna (czasy, głębokość, nagrody).
 * `GameBoard`: Logika pojedynczej planszy 3x3.
@@ -43,13 +43,18 @@ Ponieważ bot rzadko widzi "mat" (koniec gry) w kilku ruchach, stan planszy jest
 * `minimax`: Główna funkcja rekurencyjna.
 * `game_loop`: Pętla obsługująca wejście/wyjście zgodne ze standardem CodinGame.
 
-## 🚀 Jak użyć
+## Jak użyć
 
 1.  Skopiuj cały kod z pliku głównego (`main.py` / `solution.py`).
 2.  Wejdź na stronę zadania: [CodinGame Tic-Tac-Toe](https://www.codingame.com/ide/puzzle/tic-tac-toe).
 3.  Wklej kod do edytora online.
 4.  Wybierz język **Python 3**.
 5.  Uruchom testy ("Play all testcases") lub wyślij rozwiązanie.
+
+## Dowody na awans do ligi brązowej i srebrnej
+
+<img width="834" height="793" alt="Screenshot 2026-01-16 at 09 50 03" src="https://github.com/user-attachments/assets/f02ab6c0-ca76-403d-aed1-824a218146ac" />
+<img width="843" height="793" alt="Screenshot 2026-01-16 at 10 17 07" src="https://github.com/user-attachments/assets/84d0f837-5d48-4121-a7cf-9f4e172185b5" />
 
 ---
 *Autorzy: Agata "Aginion" Poprawka, Ignacy "Inowaq" Nowak*
